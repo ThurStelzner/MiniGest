@@ -1,0 +1,277 @@
+/* --- Variáveis e Reset --- */
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --danger: #ef4444;
+    --danger-hover: #dc2626;
+    --border-color: #e2e8f0;
+    --success: #22c55e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* --- Navegação --- */
+.navBar {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.navItens {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navItens a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.navItens a:hover {
+    color: white;
+}
+
+/* --- Layout Principal --- */
+.block {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+    font-size: 1.8rem;
+}
+
+/* --- Cards de Tarefa (Home) --- */
+#listaTarefas {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.tarefaCard {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary-color);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+}
+
+.tarefaCard:hover {
+    transform: translateY(-2px);
+}
+
+.tarefaCard h3 {
+    color: var(--primary-color);
+}
+
+/* --- Formulários --- */
+.formGroup {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* --- Itens de Passo (Adicionar/Editar) --- */
+.passoItem {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 0.8rem;
+}
+
+.passoItem input {
+    flex: 1;
+}
+
+/* --- Botões --- */
+button, .btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--primary-hover);
+}
+
+#adicionarPasso, #addPassoEdit {
+    background-color: #f1f5f9;
+    color: var(--text-main);
+    border: 1px dashed var(--text-muted);
+}
+
+#adicionarPasso:hover, #addPassoEdit:hover {
+    background-color: #e2e8f0;
+}
+
+.excluirTarefa {
+    background-color: transparent;
+    padding: 0.6rem 1.2rem;
+    color: var(--danger);
+}
+
+.removerPasso{
+    background-color: transparent;
+    padding: 0.6rem 1.2rem;
+    color: var(--danger);
+    border-radius: 100%;
+}
+
+.removerPasso:hover, .excluirTarefa:hover {
+    background-color: #fef2f2;
+}
+
+/* Link de editar na Home */
+.tarefaCard a {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.tarefaCard a:hover {
+    text-decoration: underline;
+}
+
+/* --- Checkboxes e Estilo de Conclusão --- */
+input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: var(--success);
+}
+
+small {
+    color: var(--text-muted);
+}
+
+/* --- Responsividade (Media Queries) --- */
+
+/* Ajustes para Tablets e PCs (Telas médias e grandes) */
+@media (min-width: 769px) {
+    .block {
+        max-width: 700px; /* Mantém o conteúdo centralizado e não muito largo */
+        margin: 3rem auto;
+    }
+
+    #listaTarefas {
+        display: flex;
+        flex-direction: column; /* Garante que fiquem um em cima do outro */
+        gap: 1.5rem;
+    }
+}
+
+/* Ajustes para Dispositivos Móveis (até 768px) */
+@media (max-width: 768px) {
+    .navBar {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+        gap: 10px;
+    }
+
+    .navItens {
+        padding: 0;
+        justify-content: center;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .block {
+        margin: 1.5rem auto;
+        padding: 0 1rem;
+    }
+}
+
+/* Ajustes para Celulares Pequenos (até 480px) */
+@media (max-width: 480px) {
+    .passoItem {
+        flex-direction: column; /* Empilha o input e o botão de remover */
+        background: #f8fafc;
+        padding: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+    }
+
+    .passoItem button {
+        align-self: flex-end; /* Botão remover alinhado à direita no mobile */
+        width: auto;
+    }
+
+    .tarefaCard button, 
+    .tarefaCard a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    input[type="text"] {
+        font-size: 16px; /* Evita zoom indesejado no iOS */
+    }
+}

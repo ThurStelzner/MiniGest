@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+{% block content %}
+    <div class="block">
+        <h1>Editar Tarefa</h1>
+        <form id="editForm">
+            <input type="hidden" id="tarefaId" value="{{ tarefa.id }}">
+            <div class="formGroup">
+                <label for="titulo">Titulo:</label>
+                <input type="text" id="titulo" value="{{ tarefa.titulo }}" required>
+            </div>
+            <div class="formGroup">
+                <label>Passos:</label>
+                <div id="passosContainer">
+                    {% for passo in tarefa.passos %}
+                        <div class="passoItem">
+                            <input type="text" class="passoInput" value="{{ passo }}">
+                            <button type="button" class="removerPasso" onclick="removerPasso(this)">X</button>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="button" id="addPassoEdit">Adicionar Passo</button>
+            </div>
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/editTarefa.js') }}"></script>
+{% endblock %}

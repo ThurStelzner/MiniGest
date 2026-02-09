@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+{% block content %}
+    <div class="block">
+        <h1>Adicionar Tarefa</h1>
+        <form id="tarefaForm">
+            <div class="formGroup">
+                <label for="titulo">Titulo da tarefa:</label>
+                <input type="text" id="titulo" name="titulo" placeholder="Nova Tarefa" required>
+            </div>
+            <div class="formGroup">
+                <label>Passos da tarefa:</label>
+                <div class="passosContainer" id="passosContainer">
+                    <div class="passoItem">
+                        <input type="text" class="passoInput" placeholder="Descreva o passo" name="passos[]">
+                        <button type="button" class="removerPasso" onclick="removerPasso(this)">X</button>
+                    </div>
+                </div>
+                <button type="button" id="adicionarPasso">Adicionar Passo</button>
+            </div>
+            <button type="submit">Salvar Tarefa</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/addPasso.js') }}"></script>
+{%endblock%}
